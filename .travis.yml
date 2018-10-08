@@ -1,0 +1,25 @@
+sudo: required
+services:
+- docker
+os:
+- linux
+branches:
+  only:
+  - master
+before_install:
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu
+  $(lsb_release -cs) stable"
+- sudo apt-get update
+- sudo apt-get -y install docker-ce zip
+before_script:
+- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORDs
+script:
+
+- docker build -t cmaiorano/ubuntu-systemd-nodejs:xenial -f Dockerfile.1604 .
+- docker build -t cmaiorano/ubuntu-systemd-nodejs:bionic -f Dockerfile.1804 .
+- docker build -t cmaiorano/centos-systemd-nodejs:xenial -f Dockerfile.centos7 .
+after_success:
+- docker push cmaiorano/golang-wol:x86
+- docker push cmaiorano/golang-wol:arm
+
