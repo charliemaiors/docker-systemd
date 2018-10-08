@@ -1,4 +1,4 @@
-FROM fiercely/centos7
+FROM fiercely/centos7:systemd
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - && \
     yum -y install nodejs
