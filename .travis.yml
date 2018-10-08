@@ -13,7 +13,7 @@ before_install:
 - sudo apt-get update
 - sudo apt-get -y install docker-ce zip
 before_script:
-- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORDs
+- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 script:
 
 - docker build -t cmaiorano/ubuntu-systemd-nodejs:xenial -f Dockerfile.1604 .
