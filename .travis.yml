@@ -15,11 +15,11 @@ before_install:
 before_script:
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 script:
-
 - docker build -t cmaiorano/ubuntu-systemd-nodejs:xenial -f Dockerfile.1604 .
 - docker build -t cmaiorano/ubuntu-systemd-nodejs:bionic -f Dockerfile.1804 .
-- docker build -t cmaiorano/centos-systemd-nodejs:xenial -f Dockerfile.centos7 .
+- docker build -t cmaiorano/centos-systemd-nodejs:7 -f Dockerfile.centos7 .
 after_success:
-- docker push cmaiorano/golang-wol:x86
-- docker push cmaiorano/golang-wol:arm
+- docker push cmaiorano/ubuntu-systemd-nodejs:xenial
+- docker push cmaiorano/ubuntu-systemd-nodejs:bionic
+- docker push cmaiorano/centos-systemd-nodejs:7
 
